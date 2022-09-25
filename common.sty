@@ -1,0 +1,241 @@
+% these are macros, commands, math, etc. that are expected to be commonly reused
+% across many different latex projects
+
+% common imports
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[capitalize]{cleveref}
+\definecolor{light_green}{RGB}{0,200,6}
+\hypersetup{
+        colorlinks=true,
+        linkcolor=blue,
+        filecolor=magenta,
+        urlcolor=magenta,
+    }
+\usepackage{outlines}
+
+\usepackage{adjustbox}
+
+\def \CSAIL{Computer Science and Artificial Intelligence Laboratory (CSAIL)}
+\def \MIT{Massachusetts Institute of Technology (MIT)}
+\def \MITaddr{Cambridge, MA 02139, USA}
+\def \AOPE{Department of Applied Ocean Physics \& Engineering}
+\def \WHOI{Woods Hole Oceanographic Institution}
+\def \WHOIaddr{Woods Hole, MA 02543, USA}
+
+% standard commands
+\newcommand{\citeme}[1]{{\bfseries \scriptsize  \color{red}\framebox{CITE}~}}
+\newcommand{\referenceme}[1]{{\bfseries \scriptsize  \color{green}\framebox{REF}~}}
+\newcommand{\drawme}[1]{\centerline{\scriptsize\centering \boxed{\color{purple} \textsc{Draw me!}}}~}
+\newcommand{\finishme}[1]{{\bfseries \scriptsize  \color{blue}\framebox{FINISH ME!}}~}
+\newcommand{\findword}[1]{{\bfseries \scriptsize  \color{blue}\framebox{word?}}~}
+\newcommand{\doublecheck}[1]{{\bfseries \scriptsize \color{blue}\framebox{VERIFY}}~}
+\newcommand{\comment}[1]{}
+
+% theorems, lemmas, etc
+\newtheorem{theorem}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{assumption}[theorem]{Assumption}
+
+
+%GRAPH THEORY
+
+\def \Graph {\mathcal{G}}  %Graph operator
+\def \Nodes {\mathcal{V}}  %Set of nodes
+\def \Edges {\mathcal{E}}  %Set of undirected edges
+\def \TransformEdges {\mathcal{E}_{p}}  %Set of undirected edges
+\def \RangeEdges {\mathcal{E}_{r}}  %Set of undirected edges
+\newcommand{\directed}[1]{\vec{#1}}  %Decorator to denote directed graphs
+\def \dEdges{\directed{\Edges}}  %Set of directed edges
+\def \Arcs{\mathcal{A}}
+\def \edge{\lbrace i,j \rbrace}  %Undirected edge between i and j\
+\def \dedge{(i,j)}  %Directed edge from i to j
+
+\def \incEdges{\delta}
+\def \inEdges{\delta^{+}}
+\def \outEdges{\delta^{-}}
+\DeclareMathOperator{\indeg}{indeg}
+\DeclareMathOperator{\outdeg}{outdeg}
+
+
+% Math
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
+\DeclareMathOperator*{\SVD}{SVD}
+% \newcommand{\st}{\textnormal{s.t.\; }}
+\newcommand{\st}{\textnormal{subject to\; }}
+
+\DeclareMathOperator{\Indicator}{\mathbb{I}}
+\DeclareMathOperator{\mhyphen}{\text{-}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RnonNeg}{\R_{+}}
+\newcommand{\Rpos}{\R_{++}}
+\DeclareMathOperator{\bfx}{\mathbf{x}}
+\DeclareMathOperator{\Sym}{Sym}
+%Set of positive semidefinite matrices
+\def \PSD{\mathcal{S}_{+}}
+%Set of skew-symmetric matrices
+\DeclareMathOperator{\Skew}{Skew}
+%Used to represent the projective special linear group of matrices
+\DeclareMathOperator{\PSL}{PSL}
+%The trace function
+\DeclareMathOperator{\tr}{tr}
+%To get the span operator
+\DeclareMathOperator{\Span}{span}
+%The rank operator
+\DeclareMathOperator{\rank}{rank}
+%Diagonal matrix operator
+\DeclareMathOperator{\Diag}{Diag}
+%Diagonal matrix operator
+\DeclareMathOperator{\diag}{diag}
+%Get the vectorization of a matrix
+\DeclareMathOperator \vect{vec}
+%The all-ones vector
+\def \ones{\mathbbm{1}}
+%The transpose operator
+\def \transpose{^\mathsf{T}}
+%The inverse
+\def \inv{^{-1}}
+%The inverse transpose
+\def \tinv{^{-\mathsf{T}}}
+%The Moore-Penrose inverse
+\def \pinv {^\dagger}
+
+%DIFFERENTIAL GEOMETRY
+%Direction derivative operator
+\DeclareMathOperator{\DirectionalDerivative}{D}
+%Riemannian gradient
+\DeclareMathOperator{\grad}{grad}
+%Riemannian Hessian
+\DeclareMathOperator{\Hess}{Hess}
+%Projection operator
+\DeclareMathOperator{\proj}{Proj}
+
+%The general linear group
+\DeclareMathOperator{\GL}{GL}
+%Lie algebra for the general linear group
+\newcommand{\gl}{\mathfrak{gl}}
+%The special linear group
+\DeclareMathOperator{\SL}{SL}
+%Used to represent the orthogonal group
+\DeclareMathOperator{\Orthogonal}{O}
+\DeclareMathOperator{\OrthogonalThree}{\Orthogonal (3)}
+\DeclareMathOperator{\OrthogonalTwo}{\Orthogonal (2)}
+\DeclareMathOperator{\Orthogonald}{{\Orthogonal}(d)}
+%The special orthogonal group
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SOThree}{\SO (3)}
+\DeclareMathOperator{\SOTwo}{\SO (2)}
+\DeclareMathOperator{\SOd}{{\SO}(d)}
+%Lie algebra for the orthogonal and special orthogonal groups
+\newcommand{\so}{\mathfrak{so}}
+\DeclareMathOperator{\soThree}{\so (3)}
+\DeclareMathOperator{\soTwo}{\so (2)}
+%The special Euclidean group
+\DeclareMathOperator{\SE}{SE}
+\DeclareMathOperator{\SEThree}{\SE (3)}
+\DeclareMathOperator{\SETwo}{\SE (2)}
+\DeclareMathOperator{\SEd}{{\SE}(d)}
+%Lie algebra for the special euclidean group
+\newcommand{\se}{\mathfrak{se}}
+%Generic manifold
+\DeclareMathOperator{\Manifold}{\mathcal{M}}
+%Tangent map
+\DeclareMathOperator{\TangentMap}{\mathcal{T}_{\bfx} \Manifold}
+%Retraction operator
+\DeclareMathOperator{\Retraction}{\mathcal{R}_{\bfx} \Manifold}
+%Vector in tangent space
+\DeclareMathOperator{\TangentVector}{\bm{\delta}}
+
+%Base symbols to denote robot poses, positions, orientations
+\def \pose{x}
+\def \Pose{T}
+\def \tran{t}
+\def \dist{d}
+\def \rot{R}
+\def \landmark{l}
+
+\def \allPoses{\mathbf{\pose}}
+% \def \all
+
+%%Commands that specify the decorators that denote true latent values, noisy observations, and statistical estimates, respectively
+\newcommand{\true}[1]{\underline{#1}}
+\newcommand{\noisy}[1]{\tilde{#1}}
+\newcommand{\est}[1]{\hat{#1}}
+\newcommand{\mean}[1]{\bar{#1}}
+\newcommand{\opt}[1]{{#1}^{*}}
+\newcommand{\perturb}[1]{{#1}^{\epsilon}}
+
+%%Shorthand symbols for noisy observations of poses, positions, and orientations
+\def \npose{\noisy{\pose}}
+\def \nPose{\noisy{\Pose}}
+\def \ntran{\noisy{\tran}}
+\def \nlandmark{\noisy{\landmark}}
+\def \nrot{\noisy{\rot}}
+\def \ndist{\noisy{\dist}}
+
+%%Shorthand for estimated values
+\def \epose{\est{\pose}}
+\def \ePose{\est{\Pose}}
+\def \etran{\est{\tran}}
+\def \elandmark{\est{\landmark}}
+\def \erot{\est{\rot}}
+\def \edist{\est{\dist}}
+
+%%Shorthand for optimal values
+\def \opose{\opt{\pose}}
+\def \oPose{\opt{\Pose}}
+\def \otran{\opt{\tran}}
+\def \olandmark{\opt{\landmark}}
+\def \orot{\opt{\rot}}
+\def \odist{\opt{\dist}}
+
+%%Shorthand symbols for true latent poses, positions, and orientations
+\def \tpose{\true{\pose}}
+\def \tPose{\true{\Pose}}
+\def \ttran{\true{\tran}}
+\def \tlandmark{\true{\landmark}}
+\def \trot{\true{\rot}}
+\def \tdist{\true{\dist}}
+
+%% Shorthand for perturbations
+\def \ppose{\perturb{\pose}}
+\def \pPose{\perturb{\Pose}}
+\def \ptran{\perturb{\tran}}
+\def \plandmark{\perturb{\landmark}}
+\def \prot{\perturb{\rot}}
+\def \pdist{\perturb{\dist}}
+
+
+%% Shorthand for d-dimensional real vectors and d-by-d real matrices
+\def \dvec{\R^d}
+\def \dmat{\R^{d\times d}}
+
+%% probability distributions
+\def \gaussian{\mathcal{N}}
+\def \langevin{\operatorname{Langevin}}
+\def \prob{\operatorname{P}}
+
+%% explain things
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+
+\def \apriori{\textit{a priori} }
+\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}

@@ -1,0 +1,60 @@
+\section{SCORE: Second Order Conic Relaxation}
+\label{sec:ra-slam-score}
+In this section we reformulate the MAP problem of \cref{eq:ra-slam-nls} as a
+QCQP. We then show how to construct SCORE by relaxing this QCQP to a SOCP.
+
+\subsection{RA-SLAM as a QCQP}
+\label{sec:ra-slam-qcqp}
+ We perform two changes to convert the non-convex NLS problem of
+ \cref{eq:ra-slam-nls} problem to the QCQP of \cref{eq:ra-slam-qcqp}. First, we
+ rewrite the $\SOd$ constraint as the orthonormality constraint and remove the
+ associated determinant constraint.  Secondly, we introduce the auxiliary
+ variables, $\dist_{ij} \in \RnonNeg$ to rewrite the range-measurement cost
+ terms as quadratics.  In this formulation the cost terms are quadratic and
+ convex with respect to the problem variables and all constraints are quadratic
+ equality constraints. Thus, \cref{eq:ra-slam-qcqp} is a QCQP.
+
+Previous work \cite{carlone15iros,briales17ral,tron15rssworkshop} demonstrated
+that $\det(\rot_i) = 1$ can be written as a set of quadratic equalities and that
+the contribution of this determinant constraint is negligible, justifying its
+removal. With exception to the determinant constraint, this QCQP is an exact
+reformulation of \cref{eq:ra-slam-nls}:
+\RaSlamQcqp
+
+\subsection{Relaxing Equation (\ref{eq:ra-slam-qcqp}) to a SOCP}
+\label{sec:ra-slam-socp}
+
+We will now introduce the primary contribution of our paper, a \ScoreFull~(SCORE). As
+previously mentioned, SCORE naturally arises as a relaxation of the QCQP in
+\cref{eq:ra-slam-qcqp}. We emphasize that \cref{eq:ra-slam-qcqp} is not solved
+in our approach, as it is not computationally practical to do so.
+\cref{eq:ra-slam-qcqp} is important as an intermediate representation to derive
+SCORE.
+
+We relax the orthonormality constraints by removing them entirely, eliminating
+that specific source of non-convexity. To eliminate the non-convexity from the
+quadratic equality constraint on our auxiliary variables ($\dist_{ij}$) we first
+recall that $\dist_{ij} \geq 0$, so we can drop the squares on each side of the
+inequality without modifying the feasible set. From here, we can relax the
+equality constraint to the convex inequality constraint $ \dist_{ij} \geq \lVert
+    \tran_i - \tran_j \rVert_2$. Importantly, this specific constraint relating the
+auxiliary variables and position variables is a (convex) second-order cone
+constraint \cite{boyd04book,alizadeh03mathematicalprogramming}. This relaxed
+problem takes the following form, where $\CostFunction$ is the same cost
+function as in \cref{eq:ra-slam-qcqp}.
+\begin{equation}
+    \label{eq:ra-slam-socp}
+    \begin{aligned}
+         \min\limits_{\bf \tran, \bf \rot, \bf \dist} ~~ & \CostFunction \\
+         \st & \dist_{ij} \geq \lVert \tran_i - \tran_j \rVert_2,~\forall \dedge \in \RangeEdges \\
+          & \rot_0 = I_d
+    \end{aligned}
+\end{equation}
+With this previously mentioned second-order cone constraint on $\dist_{ij}$, it follows that
+\cref{eq:ra-slam-socp} is a SOCP, i.e., it is the minimization of quadratic cost
+functions over the intersection of an affine subspace with second-order
+cones. This is a known form of SOCPs \cite{alizadeh03mathematicalprogramming},
+and thus existing solvers (e.g., \cite{gurobi}) can efficiently solve
+\cref{eq:ra-slam-socp} to global optimality. Similarly to \cite{martinec07cvpr},
+the first rotation ($\rot_0$) is constrained to prevent a trivial solution of
+all zeros.

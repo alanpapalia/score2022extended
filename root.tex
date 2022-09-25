@@ -1,0 +1,90 @@
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+\usepackage{times}
+
+% numbers option provides compact numerical references in the text.
+% \usepackage[sort,numbers]{natbib}
+\usepackage{multicol}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{common}
+\usepackage{this_doc}
+\usepackage{cite}
+
+\pdfminorversion=4
+\usepackage[protrusion=true,
+             expansion=true,
+             tracking=true,
+             final,
+             stretch=25,factor=1250]{microtype}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\usepackage[en-US]{datetime2}
+\newcommand{\mydate}[1]{%
+  \DTMsavetimestamp{creation}{#1T00:00:00-05:00}%
+  \date{\DTMusedate{creation}}%
+  {\DTMsetstyle{pdf}%
+  \pdfinfo{
+    /CreationDate (\DTMuse{creation})
+  }}%
+}
+\mydate{2022-1-28}
+\pdfinfo{
+   /Author (Alan Papalia)
+   /Title  (A Second-Order Conic Initialization Technique for Range-Aided SLAM)
+   /Subject (Range-Aided SLAM)
+   /Keywords (SLAM, Convex Relaxation, Second-Order Cone Program)
+}
+
+% paper title
+\title{SCORE: A Second-Order Conic Initialization for Range-Aided SLAM}
+\author{Alan Papalia$^{1,2}$, Joseph Morales$^{1}$, Kevin J. Doherty$^{1,2}$, David M. Rosen$^{3,4}$, John J. Leonard$^{1}$
+\thanks{$^{1}$ \CSAIL, \MIT, \MITaddr,~{\tt\footnotesize \{apapalia, jrales, kdoherty, jleonard\}@mit.edu}}
+\thanks{$^{2}$ \AOPE, \WHOI, \WHOIaddr}
+\thanks{$^{3}$ Department of Electrical \& Computer Engineering, Northeastern University,
+Boston, MA 02115, USA, {\tt\footnotesize d.rosen@northeastern.edu}}
+\thanks{$^{4}$ Department of Math, Northeastern University,
+Boston, MA 02115, USA}
+}
+
+\def \JohnVersion{
+  \usepackage{setspace}
+  \doublespacing
+  \onecolumn
+  \documentclass[letterpaper, 12 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+  \setstretch{2}
+}
+
+% \JohnVersion
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\input{sections/1_abstract.tex}
+\input{sections/2_introduction.tex}
+\input{sections/3_related_work.tex}
+\input{sections/4_notation_and_preliminaries.tex}
+\input{sections/5_ro_slam_formulation.tex}
+\input{sections/6_socp_relaxation.tex}
+\input{sections/6b_recovering_solution.tex}
+\input{sections/7_experiments.tex}
+\input{sections/8_discussion.tex}
+\input{sections/9_conclusion.tex}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,references}
+
+\end{document}
+
+

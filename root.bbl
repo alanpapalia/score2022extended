@@ -1,0 +1,312 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{boroson20iros}
+E.~R. Boroson, R.~Hewitt, N.~Ayanian, and J.-p.~D. Croix, ``{Inter-Robot Range
+  Measurements in Pose Graph Optimization},'' \emph{2020 IEEE/RSJ International
+  Conference on Intelligent Robots and Systems (IROS)}, pp. 4806--4813, 2020.
+
+\bibitem{funabiki21ral}
+N.~Funabiki, B.~Morrell, J.~Nash, and A.~A. Agha-Mohammadi, ``{Range-Aided
+  Pose-Graph-Based SLAM: Applications of Deployable Ranging Beacons for Unknown
+  Environment Exploration},'' \emph{IEEE Robotics and Automation Letters},
+  vol.~6, no.~1, pp. 48--55, 2021.
+
+\bibitem{Newman03icra}
+P.~Newman and J.~Leonard, ``Pure range-aided sub-sea {SLAM},'' in \emph{IEEE
+  Intl. Conf. on Robotics and Automation (ICRA)}, vol.~2, Sept. 2003, pp.
+  1921--1926.
+
+\bibitem{Bahr06iser}
+A.~Bahr and J.~Leonard, ``Cooperative {L}ocalization for {A}utonomous
+  {U}nderwater {V}ehicles,'' in \emph{Intl. Sym. on Experimental Robotics
+  (ISER)}, Rio de Janeiro, Brasil, July 2006.
+
+\bibitem{Bahr12iros}
+A.~Bahr, J.~Leonard, and A.~Martinoli, ``Dynamic positioning of beacon vehicles
+  for coop- erative underwater navigation,'' in \emph{IEEE/RSJ Intl. Conf. on
+  Intelligent Robots and Systems (IROS)}, Algarve, Portugal, 2012.
+
+\bibitem{boyd04book}
+S.~Boyd and L.~Vandenberghe, \emph{Convex optimization}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Cambridge university press, 2004.
+
+\bibitem{carlone15icra}
+L.~Carlone, R.~Tron, K.~Daniilidis, and F.~Dellaert, ``{Initialization
+  techniques for 3D SLAM: A survey on rotation estimation and its use in pose
+  graph optimization},'' \emph{Proceedings - IEEE International Conference on
+  Robotics and Automation}, vol. 2015-June, no. June, pp. 4597--4604, 2015.
+
+\bibitem{carlone15iros}
+L.~Carlone, D.~M. Rosen, G.~Calafiore, J.~J. Leonard, and F.~Dellaert,
+  ``Lagrangian duality in {3D} {SLAM}: Verification techniques and optimal
+  solutions,'' in \emph{IEEE/RSJ Intl. Conf. on Intelligent Robots and Systems
+  (IROS)}, Hamburg, Germany, sep 2015.
+
+\bibitem{giamou19ral}
+M.~Giamou, Z.~Ma, V.~Peretroukhin, and J.~Kelly, ``{Certifiably Globally
+  Optimal Extrinsic Calibration From Per-Sensor Egomotion},'' \emph{IEEE
+  Robotics and Automation Letters}, vol.~4, no.~2, pp. 367--374, 2019.
+
+\bibitem{so07mathematicalprogramming}
+A.~M.~C. So and Y.~Ye, ``{Theory of semidefinite programming for sensor network
+  localization},'' \emph{Mathematical Programming}, vol. 109, no. 2-3, pp.
+  367--384, 2007.
+
+\bibitem{rosen19ijrr}
+D.~M. Rosen, L.~Carlone, A.~S. Bandeira, and J.~J. Leonard, ``{SE}-sync: A
+  certifiably correct algorithm for synchronization over the special euclidean
+  group,'' \emph{The International Journal of Robotics Research}, vol.~38, no.
+  2-3, pp. 95--125, 2019.
+
+\bibitem{dellaert2017factor}
+F.~Dellaert, M.~Kaess, \emph{et~al.}, ``Factor graphs for robot perception,''
+  \emph{Foundations and Trends{\textregistered} in Robotics}, vol.~6, no. 1-2,
+  pp. 1--139, 2017.
+
+\bibitem{menegatti09icra}
+E.~Menegatti, A.~Zanella, S.~Zilli, F.~Zorzi, and E.~Pagello, ``{Range-only
+  slam with a mobile robot and a wireless sensor networks},'' \emph{Proceedings
+  - IEEE International Conference on Robotics and Automation}, pp. 8--14, 2009.
+
+\bibitem{Djugash09iros}
+J.~Djugash, S.~Singh, and B.~P. Grocholsky, ``Modeling mobile robot motion with
+  polar representations,'' in \emph{IEEE/RSJ Intl. Conf. on Intelligent Robots
+  and Systems (IROS)}, Oct. 2009.
+
+\bibitem{djugash09springer}
+J.~Djugash and S.~Singh, ``A robust method of localization and mapping using
+  only range,'' \emph{Springer Tracts in Advanced Robotics}, vol.~54, pp.
+  341--351, 2009.
+
+\bibitem{gonzalez09ras}
+J.~Gonz{\'{a}}lez, J.~L. Blanco, C.~Galindo, A.~Ortiz-de Galisteo, J.~A.
+  Fern{\'{a}}ndez-Madrigal, F.~A. Moreno, and J.~L. Mart{\'{i}}nez, ``{Mobile
+  robot localization based on Ultra-Wide-Band ranging: A particle filter
+  approach},'' \emph{Robotics and Autonomous Systems}, vol.~57, no.~5, pp.
+  496--507, 2009.
+
+\bibitem{blanco08icra}
+J.~L. Blanco, J.~Gonz{\'{a}}lez, and J.~A. Fern{\'{a}}ndez-Madrigal, ``{A pure
+  probabilistic approach to range-only SLAM},'' \emph{Proceedings - IEEE
+  International Conference on Robotics and Automation}, pp. 1436--1441, 2008.
+
+\bibitem{blanco08iros}
+J.~L. Blanco, J.~A. Fern{\'{a}}ndez-Madrigal, and J.~Gonz{\'{a}}lez,
+  ``{Efficient probabilistic range-only SLAM},'' \emph{2008 IEEE/RSJ
+  International Conference on Intelligent Robots and Systems, IROS}, pp.
+  1017--1022, 2008.
+
+\bibitem{herranz14icra}
+F.~Herranz, A.~Llamazares, E.~Molinos, and M.~Ocana, ``A comparison of slam
+  algorithms with range only sensors,'' in \emph{IEEE Intl. Conf. on Robotics
+  and Automation (ICRA)}, 2014, pp. 4606--4611.
+
+\bibitem{Olson06joe}
+E.~Olson, J.~Leonard, and S.~Teller, ``Robust range-aided beacon
+  localization,'' \emph{IEEE Journal of Oceanic Engineering}, vol.~31, no.~4,
+  pp. 949--958, Oct. 2006.
+
+\bibitem{boots13icml}
+B.~Boots and G.~J. Gordon, ``{A Spectral learning approach to range-only
+  SLAM},'' \emph{30th International Conference on Machine Learning, ICML 2013},
+  vol.~28, no. PART 1, pp. 19--26, 2013.
+
+\bibitem{guo2017ijmav}
+K.~Guo, Z.~Qiu, W.~Meng, L.~Xie, and R.~Teo, ``Ultra-wideband based cooperative
+  relative localization algorithm and experiments for multiple unmanned aerial
+  vehicles in gps denied environments,'' \emph{International Journal of Micro
+  Air Vehicles}, vol.~9, no.~3, pp. 169--186, 2017.
+
+\bibitem{li20arxiv}
+\BIBentryALTinterwordspacing
+S.~Li, M.~Coppola, C.~{De Wagter}, and G.~C. H.~E. de~Croon, ``{An autonomous
+  swarm of micro flying robots with range-based relative localization},'' 2020.
+  [Online]. Available: \url{http://arxiv.org/abs/2003.05853}
+\BIBentrySTDinterwordspacing
+
+\bibitem{zhou08tro}
+X.~S. Zhou and S.~I. Roumeliotis, ``{Robot-to-robot relative pose estimation
+  from range measurements},'' \emph{IEEE Transactions on Robotics}, vol.~24,
+  no.~6, pp. 1379--1393, 2008.
+
+\bibitem{trawny07iros}
+N.~Trawny, X.~S. Zhou, K.~X. Zhou, and S.~I. Roumeliotis, ``3d relative pose
+  estimation from distance-only measurments,'' in \emph{IEEE/RSJ Intl. Conf. on
+  Intelligent Robots and Systems (IROS)}, 2007, pp. 1071----1078.
+
+\bibitem{trawny10rss}
+N.~Trawny, X.~S. Zhou, and S.~I. Roumeliotis, ``3d relative pose estimation
+  from six distances,'' in \emph{Robotics: Science and Systems (RSS)}, vol.~5,
+  2010, pp. 233--240.
+
+\bibitem{trawny10tro}
+N.~Trawny, X.~S. Zhou, K.~Zhou, and S.~I. Roumeliotis, ``Interrobot
+  transformations in 3-d,'' \emph{{IEEE} Trans. Robotics}, vol.~26, no.~2, pp.
+  226--243, 2010.
+
+\bibitem{jiang20itaes}
+B.~Jiang, B.~D. Anderson, and H.~Hmam, ``{3-D Relative Localization of Mobile
+  Systems Using Distance-Only Measurements via Semidefinite Optimization},''
+  \emph{IEEE Transactions on Aerospace and Electronic Systems}, vol.~56, no.~3,
+  pp. 1903--1916, 2020.
+
+\bibitem{li20iros}
+M.~Li, G.~Liang, H.~Luo, H.~Qian, and T.~L. Lam, ``{Robot-to-robot relative
+  pose estimation based on semidefinite relaxation optimization},'' \emph{IEEE
+  International Conference on Intelligent Robots and Systems}, pp. 4491--4498,
+  2020.
+
+\bibitem{Li2022ral}
+M.~Li, T.~L. Lam, and Z.~Sun, ``{3-D Inter-Robot Relative Localization via
+  Semidefinite Optimization},'' \emph{IEEE Robotics and Automation Letters},
+  vol.~7, no.~4, pp. 10\,081--10\,088, 2022.
+
+\bibitem{martinec07cvpr}
+D.~Martinec and T.~Pajdla, ``{Robust rotation and translation estimation in
+  multiview reconstruction},'' \emph{Proceedings of the IEEE Computer Society
+  Conference on Computer Vision and Pattern Recognition}, 2007.
+
+\bibitem{govindu01cvpr}
+V.~M. Govindu, ``Combining two-view constraints for motion estimation,''
+  \emph{Proceedings of the IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition}, vol.~2, pp. 218--225, 2001.
+
+\bibitem{fredriksson13lnsc}
+J.~Fredriksson and C.~Olsson, ``Simultaneous multiple rotation averaging using
+  lagrangian duality,'' \emph{Lecture Notes in Computer Science (including
+  subseries Lecture Notes in Artificial Intelligence and Lecture Notes in
+  Bioinformatics)}, vol. 7726 LNCS, no. PART 3, pp. 245--258, 2013.
+
+\bibitem{tron14tac}
+R.~Tron and R.~Vidal, ``{Distributed 3-D localization of camera sensor networks
+  from 2-D image measurements},'' \emph{IEEE Transactions on Automatic
+  Control}, vol.~59, no.~12, pp. 3325--3340, 2014.
+
+\bibitem{carlone14ijrr}
+L.~Carlone, R.~Aragues, J.~A. Castellanos, and B.~Bona, ``{A fast and accurate
+  approximation for planar pose graph optimization},'' \emph{International
+  Journal of Robotics Research}, vol.~33, no.~7, pp. 965--987, 2014.
+
+\bibitem{briales17ral}
+J.~Briales and J.~Gonzalez-Jimenez, ``Cartan-sync: Fast and global
+  se(d)-synchronization,'' \emph{IEEE Robotics and Automation Letters}, vol.~2,
+  no.~4, pp. 2127--2134, 2017.
+
+\bibitem{tron15rssworkshop}
+R.~Tron, D.~M. Rosen, and L.~Carlone, ``On the inclusion of determinant
+  constraints in lagrangian duality for 3d slam,'' \emph{Proc. Robotics:
+  Science and Systems (RSS), Workshop "The Problem of Mobile Sensors"}, vol.~2,
+  no.~1, 2015.
+
+\bibitem{fan20tro}
+\BIBentryALTinterwordspacing
+T.~Fan, H.~Wang, M.~Rubenstein, and T.~Murphey, ``{CPL-SLAM: Efficient and
+  Certifiably Correct Planar Graph-Based SLAM Using the Complex Number
+  Representation},'' \emph{IEEE Transactions on Robotics}, vol.~36, pp.
+  1719----1737, 2020. [Online]. Available:
+  \url{http://arxiv.org/abs/2007.06708}
+\BIBentrySTDinterwordspacing
+
+\bibitem{briales18cvpr}
+J.~Briales, L.~Kneip, and J.~Gonzalez-Jimenez, ``{A Certifiably Globally
+  Optimal Solution to the Non-minimal Relative Pose Problem},'' in
+  \emph{Proceedings of the IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition}, 2018, pp. 145--154.
+
+\bibitem{garcia-salguero21ivc}
+M.~Garcia-Salguero, J.~Briales, and J.~Gonzalez-Jimenez, ``{Certifiable
+  relative pose estimation},'' \emph{Image and Vision Computing}, vol. 109,
+  2021.
+
+\bibitem{pacholska20ral}
+M.~Pacholska, F.~D{\"{u}}mbgen, and A.~Scholefield, ``{Relax and Recover:
+  Guaranteed Range-Only Continuous Localization},'' \emph{IEEE Robotics and
+  Automation Letters}, vol.~5, no.~2, pp. 2248--2255, 2020.
+
+\bibitem{biswas06tase}
+P.~Biswas, T.~C. Liang, K.~C. Toh, Y.~Ye, and T.~C. Wang, ``{Semidefinite
+  programming approaches for sensor network localization with noisy distance
+  measurements},'' \emph{IEEE Transactions on Automation Science and
+  Engineering}, vol.~3, no.~4, pp. 360--371, 2006.
+
+\bibitem{shamsi13dgo}
+D.~Shamsi, N.~Taheri, Z.~Zhu, and Y.~Ye, ``Conditions for correct sensor
+  network localization using sdp relaxation,'' in \emph{Discrete geometry and
+  optimization}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2013, pp.
+  279--301.
+
+\bibitem{tseng07siam}
+P.~Tseng, ``{Second-order cone programming relaxation of sensor network
+  localization},'' \emph{SIAM Journal on Optimization}, vol.~18, no.~1, pp.
+  156--185, 2007.
+
+\bibitem{naddafzadeh-shirazi14twc}
+G.~Naddafzadeh-Shirazi, M.~B. Shenouda, and L.~Lampe, ``{Second order cone
+  programming for sensor network localization with anchor position
+  uncertainty},'' \emph{IEEE Transactions on Wireless Communications}, vol.~13,
+  no.~2, pp. 749--763, 2014.
+
+\bibitem{doherty01infocom}
+L.~Doherty, K.~S. Pister, and L.~{El Ghaoui}, ``{Convex position estimation in
+  wireless sensor networks},'' \emph{Proceedings - IEEE INFOCOM}, vol.~3, pp.
+  1655--1663, 2001.
+
+\bibitem{srirangarajan08twc}
+S.~Srirangarajan, A.~Tewfik, and Z.~Q. Luo, ``{Distributed sensor network
+  localization using SOCP relaxation},'' \emph{IEEE Transactions on Wireless
+  Communications}, vol.~7, no.~12, pp. 4886--4895, 2008.
+
+\bibitem{chiuso08infosys}
+A.~Chiuso, G.~Picci, and S.~Soatto, ``Wide-sense estimation on the special
+  orthogonal group,'' \emph{Communications in Information and Systems}, vol.~8,
+  no.~3, pp. 185--200, 2008.
+
+\bibitem{alizadeh03mathematicalprogramming}
+F.~Alizadeh and D.~Goldfarb, ``{Second-order cone programming},''
+  \emph{Mathematical Programming, Series B}, vol.~95, no.~1, pp. 3--51, 2003.
+
+\bibitem{gurobi}
+\BIBentryALTinterwordspacing
+{Gurobi Optimization, LLC}, ``{Gurobi Optimizer Reference Manual},'' 2021.
+  [Online]. Available: \url{https://www.gurobi.com}
+\BIBentrySTDinterwordspacing
+
+\bibitem{dellaert2012techreport}
+F.~Dellaert, ``Factor graphs and gtsam: A hands-on introduction,'' Georgia
+  Institute of Technology, Tech. Rep., 2012.
+
+\bibitem{drake}
+\BIBentryALTinterwordspacing
+R.~Tedrake and the Drake Development~Team, ``Drake: Model-based design and
+  verification for robotics,'' 2019. [Online]. Available:
+  \url{https://drake.mit.edu}
+\BIBentrySTDinterwordspacing
+
+\bibitem{grupp2017evo}
+M.~Grupp, ``evo: Python package for the evaluation of odometry and slam.''
+  \url{https://github.com/MichaelGrupp/evo}, 2017.
+
+\bibitem{Rosen15icra}
+D.~Rosen, C.~DuHadway, and J.~J. Leonard, ``A convex relaxation for approximate
+  global optimization in simultaneous localization and mapping,'' in \emph{IEEE
+  Intl. Conf. on Robotics and Automation (ICRA)}, May 2015.
+
+\end{thebibliography}

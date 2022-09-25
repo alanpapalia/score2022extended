@@ -1,0 +1,29 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Initialization in RA-SLAM}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Initialization and Convex Relaxation in State-Estimation}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Novelty of Our Approach}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Notation and Mathematical Preliminaries}{}% 6
+\BOOKMARK [1][-]{section.4}{Range-Aided SLAM Formulation}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Inference Over a Graph}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Measurement Noise Models}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{MAP Estimation for RA-SLAM}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{SCORE: Second Order Conic Relaxation}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{RA-SLAM as a QCQP}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Relaxing Equation \(6\) to a SOCP}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Using SCORE to Initialize Local-Optimization}{}% 14
+\BOOKMARK [1][-]{section.7}{Experiments}{}% 15
+\BOOKMARK [2][-]{subsection.7.1}{Experimental Evaluation}{section.7}% 16
+\BOOKMARK [2][-]{subsection.7.2}{Real-World AUV Experiments}{section.7}% 17
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Single-Robot Odometry Initialization \(Odom\)}{subsection.7.2}% 18
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Evaluation of Single-Robot Experiments}{subsection.7.2}% 19
+\BOOKMARK [2][-]{subsection.7.3}{Generation of Simulations}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.4}{Simulated Single-Robot Experiments}{section.7}% 21
+\BOOKMARK [3][-]{subsubsection.7.4.1}{Evaluation of Single-Robot Experiments}{subsection.7.4}% 22
+\BOOKMARK [2][-]{subsection.7.5}{Multi-Robot Experiments}{section.7}% 23
+\BOOKMARK [3][-]{subsubsection.7.5.1}{Multi-Robot Initialization}{subsection.7.5}% 24
+\BOOKMARK [3][-]{subsubsection.7.5.2}{Evaluation of Multi-Robot Experiments}{subsection.7.5}% 25
+\BOOKMARK [1][-]{section.8}{Discussion}{}% 26
+\BOOKMARK [2][-]{subsection.8.1}{When Does SCORE Return Poor Initializations?}{section.8}% 27
+\BOOKMARK [1][-]{section.9}{Conclusions}{}% 28
+\BOOKMARK [1][-]{section*.1}{References}{}% 29

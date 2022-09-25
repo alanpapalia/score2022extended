@@ -1,0 +1,3 @@
+{"rule":"PASSIVE_VOICE","sentence":"^\\QThe vector 2-norm is indicated as \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q and the Frobenius norm is indicated as \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"THREE_NN","sentence":"^\\QThis is the distribution whose probability density function is: \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QLangevin \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q with normalizing constant \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QNoisy measurements are indicated with a tilde (e.g., \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q).\\E$"}

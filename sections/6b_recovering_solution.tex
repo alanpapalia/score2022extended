@@ -1,0 +1,25 @@
+\section{Using SCORE to Initialize Local-Optimization}
+\label{sec:score-to-initialize}
+
+Though SCORE can be solved to global optimality, in general the SCORE solution
+will differ from that of the original problem due to the relaxed constraints.
+This is not a serious limitation, as the intent is that the SCORE solution will
+be close to the solution of the original problem. If true, the SCORE solution
+can be projected to the feasible set of the original problem, and thereby serve
+as a robust and principled initialization procedure.
+
+Projecting the SCORE solution to the original problem's feasible set only
+involves the estimated rotations. As SCORE relaxes the $\SOd$ constraints, the
+estimated values, $\rot_i$, will generally not be valid rotation matrices. As in
+\cite{martinec07cvpr}, we project the approximate rotation estimates to the
+nearest rotation matrix via singular value decomposition, as follows:
+\begin{align}
+    & \orot_i = \argmin_{\rot_i}~~\lVert \rot_i - \erot_{i,approx} \rVert_F^2 \label{eq:single-rotation-frob} \\
+    & U,S,V^\top = \SVD(\erot) \label{eq:SVD} \\
+    & \orot_i = U ~ \diag([1, 1, \det(U V^\top)]) ~ V^\top \label{eq:SOd-projection}
+\end{align}
+Projecting all approximate rotations to $\SOd$ produces a valid set of pose and
+landmark estimates. We then use this projected solution to initialize the MAP
+problem in \cref{eq:ra-slam-nls} and solve the problem with an iterative,
+local-search based NLS solver (e.g., \cite{dellaert2012techreport}) to refine
+the SCORE initial estimate.

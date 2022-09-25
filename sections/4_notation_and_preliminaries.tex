@@ -1,0 +1,37 @@
+\section{Notation and Mathematical Preliminaries}
+
+
+\textbf{Symbols:} This work generalizes across dimensionalities (e.g., 2-D or
+3-D). As such the mathematical presentation will assume to be working in
+$d$-dimensional space.  We denote the $d$-dimensional identity matrix as $I_d$
+and the special orthogonal group as $\SOd$. We refer to the set of real values
+as $\R$ and the set of nonnegative reals as $\RnonNeg$. Furthermore, we indicate vectors and
+scalars with lowercase symbols (e.g., $\tran$) and matrices with uppercase
+symbols (e.g.,  $\rot$). Noisy measurements are indicated with a tilde (e.g.,
+$\nrot$). The true (latent) value of a quantity will be underlined (e.g.,
+$\trot$)
+
+\textbf{Mathematical Operators:} We denote the matrix trace as $\tr (\cdot)$. A
+diagonal matrix with diagonal elements $[a_1, \ldots, a_n]$ is indicated as
+$\diag ([a_1, \ldots, a_n])$. The vector 2-norm is indicated as $\|
+\cdot \|_2$ and the Frobenius norm is indicated as $\| \cdot \|_F$. We
+note the following relationship between the Frobenius norm and trace operators:
+$\| A \|_F^2 = \tr(A A^\top) = \tr(A^\top A)$.
+
+\textbf{Probability Distributions:} We indicate a Gaussian probability
+distribution over Euclidean space, with mean $\mu \in \dvec$ and variance
+$\Sigma \in \dmat$ as $\gaussian (\mu, \Sigma)$. Similarly, we denote the
+isotropic Langevin probability distribution\IsotropicLangevinFootnote over
+matrix elements of the special orthogonal group, $\SOd$, with mode $\rot_\mu \in
+\dmat$ and concentration parameter $\kappa \in \R$ as $\langevin (\rot_\mu,
+\kappa)$ \cite{chiuso08infosys}.
+This is the distribution whose probability density function is:
+\begin{equation}
+    \label{eq:langevin-distribution}
+    \begin{array}{ll}
+        \prot \sim \text{Langevin}(\rot_\mu, \kappa) \\ \prob( \prot )
+        = \frac{1}{c(\kappa)} \exp\{\kappa \tr (\rot_\mu^\top
+        \prot)\}
+    \end{array}
+\end{equation}
+with normalizing constant $c(\kappa)$.

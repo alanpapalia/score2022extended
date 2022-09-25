@@ -1,0 +1,99 @@
+\section{Related Work}
+
+The current state-of-the-art formulation of RA-SLAM is through nonlinear
+least-squares (NLS) optimization based upon MAP inference
+\cite{dellaert2017factor}. This work specifically focuses on
+\textit{initialization} for this MAP formulation. Though we focus on MAP
+estimation, there are many important previous formulations of RA-SLAM using:
+extended Kalman filters \cite{Newman03icra, menegatti09icra,
+Djugash09iros,djugash09springer}, particle filters \cite{gonzalez09ras,
+blanco08icra}, mixture models \cite{blanco08iros}, and NLS optimization
+\cite{boroson20iros, funabiki21ral, herranz14icra}.
+
+We first survey previous initialization strategies for RA-SLAM problems and then
+expand the scope to cover initialization strategies for general pose-graph SLAM
+problems. As our initialization approach is a convex relaxation of the RA-SLAM
+problem, we discuss related convex relaxations in robotic state-estimation.
+Finally, as the key challenge that differentiates RA-SLAM from pose-graph SLAM
+is the nature of range measurements, we discuss the closely related field of
+sensor network localization (SNL) and convex relaxations developed specifically
+for SNL problems.
+
+\subsection{Initialization in RA-SLAM}
+
+Notable work in the single-robot RA-SLAM case used spectral graph clustering to
+initially estimate beacon locations \cite{Olson06joe}. Similarly,
+\cite{boots13icml} used spectral decomposition to jointly estimate robot poses
+and beacon locations. However, these approaches \cite{Olson06joe,boots13icml} do
+not account for sensor noise models and do not readily extend to multi-robot
+scenarios. Other initializations for multi-robot RA-SLAM used coordinated
+movement patterns to find the (single) relative transform between robots
+\cite{guo2017ijmav,li20arxiv}.
+
+Finally, a series of works developed increasingly sophisticated methods to
+compute relative transforms between two robots using range and odometry
+measurements
+\cite{zhou08tro,trawny07iros,trawny10rss,trawny10tro,jiang20itaes,li20iros,Li2022ral}.
+While these approaches represent great progress, they are only capable of
+solving for a single inter-robot relative transform and rely on (noisy)
+odometric pose composition to initialize all other poses. In fact,
+\cite{jiang20itaes,li20iros,Li2022ral} utilize convex relaxation to solve the
+relative transformation problem.
+
+\subsection{Initialization and Convex Relaxation in State-Estimation}
+
+In pose-graph SLAM many existing initializations solve approximations of the MAP
+problem. \cite{carlone15icra} leveraged the relationships between rotation and
+translation measurements in SLAM and explored the use of several rotation
+averaging algorithms
+\cite{martinec07cvpr,govindu01cvpr,fredriksson13lnsc,tron14tac} to obtain
+initial estimates. The same relationships were used to approximate the SLAM
+problem as two sequential linear estimation problems \cite{carlone14ijrr}.
+However, these approaches do not consider range measurements and thus do not
+extend to RA-SLAM problems.
+
+With exception to \cite{tron14tac}, these initialization procedures represent
+convex relaxations of the pose-graph SLAM problem. Subsequent works in
+pose-graph SLAM developed convex relaxations which obtained exact
+solutions to the non-convex MAP problem \cite{rosen19ijrr,
+carlone15iros,briales17ral,tron15rssworkshop, fan20tro
+}. Other works developed exact convex relaxations for
+the problems of extrinsic calibration \cite{giamou19ral}, two-view relative pose
+estimation \cite{briales18cvpr,garcia-salguero21ivc}, and spline-based
+trajectory estimation from range measurements with known beacon locations
+\cite{pacholska20ral}. With exception to \cite{pacholska20ral}, these convex
+relaxations also do not extend to range measurements. However,
+\cite{pacholska20ral} required known beacon locations, allowed only for range
+measurements, and only considered single-robot localization. SCORE allows for
+multi-robot RA-SLAM, and combines measurements of rigid transformations and
+ranges without necessitating any information \textit{a priori}.
+
+A number of convex relaxations exist for sensor network localization (SNL). As
+SNL centers around point-to-point distance measurements, these works are closely
+related to SCORE. Previous works  developed and analyzed semidefinite
+program (SDP) \cite{biswas06tase,
+so07mathematicalprogramming, shamsi13dgo} and SOCP \cite{tseng07siam,naddafzadeh-shirazi14twc,doherty01infocom,
+srirangarajan08twc}
+relaxations of the SNL problem. Whereas these relaxations only
+consider range measurements and can only estimate the Euclidean position of
+points, SCORE allows for rigid transformation measurements and estimation of
+poses. Additionally, as SCORE is a SOCP, it is substantially more scalable than
+these SDP relaxations.
+
+\subsection{Novelty of Our Approach}
+
+SCORE is similar to \cite{martinec07cvpr} in its relaxation of rotations and to
+\cite{naddafzadeh-shirazi14twc} in its relaxation of range measurements.
+However, it differs from these works in that it jointly considers both relative
+pose and range measurements. Notably, SCORE generalizes the
+chordal-initialization of \cite{martinec07cvpr} and the SOCP relaxation of
+\cite{naddafzadeh-shirazi14twc}.
+
+Additionally, there is much commonality to
+\cite{jiang20itaes,li20iros,Li2022ral} in that the convex relaxation of SCORE
+considers both range and relative transformation measurements. Unlike these
+works, SCORE generalizes to arbitrary dimensions (e.g. 2- or 3-D) and
+multi-robot cases. Furthermore, SCORE differs in that the convex relaxation is
+derived from the full MAP problem, and thus utilizes all measurements and
+jointly solves for an initialization of all RA-SLAM variables.
+

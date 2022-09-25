@@ -1,0 +1,275 @@
+
+%%%%% general commands for this paper %%%%%%%
+
+\newcommand{\QcqpDeterminantFootnote}{\footnote{The determinant constraint can
+                be reformulated as a set of quadratic equality constraints as
+                shown by \cite{tron15rssworkshop}. As such,
+                \cref{eq:ra-slam-qcqp} can be exactly reformulated as a
+                QCQP. However, as we mention, the contribution of this
+                constraint is often negligible for SLAM problems.}}
+\newcommand{\IsotropicLangevinFootnote}{\footnote{This work assumes
+                isotropic Langevin noise for simplicity of presentation, but our
+                approach generalizes to anisotropic Langevin noise.} }
+\newcommand{\SOCConstraintFootnote}{\footnote{It would also be a non-convex
+                constraint if the inequality sign was flipped. I.e. $
+                    \dist_{ij}^2 \leq \lVert \tran_i - \tran_j \rVert_2^2 $ is a
+                non-convex constraint}}
+\newcommand{\NumberOfMeasurementsFootnote}{\footnote{This does require that
+                enough range measurements are available to uniquely determine
+                the relative pose. I.e. at least 6 range measurements are
+                required.}}
+\newcommand{\SolveQcqpFootnote}{\footnote{Notably, at no point do we solve
+                \cref{eq:ra-slam-qcqp}. The purpose of \cref{eq:ra-slam-qcqp} is
+                to provide a convenient formulation of the problem to derive our relaxation.}}
+\newcommand{\ZhouImplementationFootnote} {\footnote{Additionally, we attempted to implement the
+                range-based relative pose estimation of \cite{zhou08tro} but
+                did not find an existing implementation and could not get
+                reasonable results after investing substantial
+                time on our own implementation.}}
+
+\def \ScoreFull{Second-order COnic RElaxation for RA-SLAM}
+\def \RepoURL{https://github.com/MarineRoboticsGroup/score}
+
+\def \TitleFigure{
+        \begin{figure}[!tbp]
+            \centering
+            \includegraphics[width=\linewidth, trim={0mm 0mm 0mm 0mm},clip]
+                {./figures/title_figure2.png}
+            \label{fig:auv-network}
+            \vspace*{-5mm}
+            \caption{Key concepts. (A) An example multi-robot
+                    range-aided SLAM problem. Red circles are problem variables (i.e.,
+                    robot poses and beacon position), green squares are relative pose
+                    measurements (e.g., odometry), and blue squares are distance
+                    measurements (e.g., acoustic ranging). (B) A second-order cone
+                    program (SOCP) is derived as a convex relaxation of the original
+                    non-convex nonlinear least-squares (NLS) formulation of the
+                    range-aided SLAM problem. The solution to the SOCP is then used to
+                    obtain the initial estimate for the NLS problem, and the NLS problem
+                    is solved to refine the SOCP initialization. (C) Illustration of
+                    contributions. The range-aided SLAM problem is first represented as
+                    a non-convex NLS problem. This work shows how to reformulate the NLS
+                    problem into a non-convex quadratically constrained quadratic
+                    program (QCQP) and how to relax the QCQP into a convex SOCP. The
+                    SOCP can be solved to obtain an initial estimate for the original
+                    NLS problem.
+                }
+            \vspace*{-8mm}
+        \end{figure}
+    }
+
+\def \MultiRobotTrajectoryFigure{
+        \begin{figure}[!tp]
+            \begin{center}
+                \includegraphics[width=\linewidth]
+                    {figures/MultiTrajsV4.png}
+            \end{center}
+            \vspace{-2mm}
+            \caption{A series of estimated trajectories from a multi-robot trial
+                    using the low-noise parameters defined in
+                    \cref{sec:generation-simulated-experiments}. Note that both the
+                    initialization from SCORE (SCORE Init) and the refined estimate
+                    based on the SCORE initialization (SCORE) are plotted here. From
+                    top-left to bottom-right: (Top-Left) The ground truth trajectories
+                    for all robots, (Top-Middle) The initialization provided by SCORE,
+                    (Top-Right) Estimated trajectory from Odom-R initialization, (Bottom-Left)
+                    Estimated trajectory from GT-Init initialization, (Bottom-Middle) Refined
+                    results from SCORE initialization, (Bottom-Right) Estimated trajectory
+                    from Odom-P initialization.}
+            \label{fig:multi-robot-trajs}
+            \vspace{-6mm}
+        \end{figure}
+    }
+
+\def \MultiRobotTrajectoryFourPanelFigure{
+        \begin{figure}[!tp]
+            \vspace*{2mm}
+            \begin{center}
+                \includegraphics[width=\linewidth]
+                    {figures/MultiRobot_4panel_OdomP.png}
+            \end{center}
+            \vspace{-4mm}
+            \caption{A series of estimated trajectories from a multi-robot trial
+                    using the low-noise parameters defined in
+                    \cref{sec:generation-simulated-experiments}. From top-left to
+                    bottom-right: (Top-Left) Estimated trajectory from GT-Init
+                    initialization, (Bottom-Left) Estimated trajectory from SCORE
+                    initialization, (Bottom-Right) Estimated trajectory from Odom-P
+                    initialization.}
+            \label{fig:multi-robot-trajs}
+            \vspace{-6mm}
+        \end{figure}
+    }
+
+\def \SingleRobotTrajectoryFigure{
+        \begin{figure}[!tp]
+            \begin{center}
+                \includegraphics[width=\linewidth, trim={0mm 5mm 0mm 5mm},clip]
+                    {figures/SingleTrajsV5.png}
+            \end{center}
+            \vspace{-2mm}
+            \caption{The final estimated trajectories and beacon positions from
+                    a single-robot trial with low-noise parameters as defined in
+                    \cref{sec:generation-simulated-experiments}.  Blue lines
+                    indicate trajectory and the red dot is the beacon position.
+                    From top-left to bottom-right: (Top-Left) The ground-truth
+                    trajectory of the robot, (Top-Right) Estimated trajectory
+                    using ground-truth initialization, (Bottom-Left) Estimated
+                    trajectory using SCORE initialization, (Bottom-Right)
+                    Estimated trajectory using odometry chain initialization
+                    (Odom).}
+            \label{fig:single-robot-trajs}
+            \vspace{-4mm}
+        \end{figure}
+    }
+
+\def \SingleRobotGoatsTrajectoryFigure{
+        \begin{figure}[tp]
+            \begin{center}
+                \includegraphics[width=\linewidth, trim={0mm 5mm 0mm 5mm},clip]
+                    % {figures/GoatsTrajsV1.png}
+                    {figures/GoatsTrajs_3col_linewidth2.png}
+            \end{center}
+            \vspace{-4mm}
+            \caption{The estimated trajectories from 3 separate autonomous
+                    underwater vehicle (AUV) trials. The dashed lines indicate the
+                    ground truth trajectories of the robot, green lines indicate the
+                    estimated trajectory using SCORE initialization, and orange lines
+                    indicate the estimated trajectory using odometric
+                    initialization.}
+            \label{fig:single-robot-trajs}
+            \vspace{-4mm}
+        \end{figure}
+    }
+
+\def \SingleRobotGoatAPEBarPlot{
+        \begin{figure}[tp]
+            \begin{center}
+                \includegraphics[width=0.9\linewidth]{figures/GoatsAPEv2.png}
+            \end{center}
+            \vspace{-5mm}
+            \caption{The absolute pose error (APE) of the estimated trajectories
+                    in the AUV trials
+                    for both SCORE and Odom initialization strategies. Green
+                    indicates SCORE initialization, and orange indicates
+                    odometric initialization.}
+            \vspace{-4mm}
+            \label{fig:single-trajectory-error}
+        \end{figure}
+    }
+
+\def \MultiRobotAPEBoxPlot{
+        \begin{figure}[!tp]
+            \begin{center}
+                \includegraphics[width=\linewidth, trim={0mm 0mm 0mm 9mm},clip]
+                    {figures/MultiTrajErrorFigureV4.png}
+            \end{center}
+            \vspace{-2mm}
+            \caption{Box and whisker plots of the average absolute pose error
+                    (APE) of the estimated trajectories of four robots for each
+                    initialization strategy. Each subplot represents results
+                    from 20 simulations. The left subplot refers to low noise
+                    experiments and the right subplot concerns high noise
+                    experiments.
+                }
+            \vspace{-4mm}
+            \label{fig:multi-trajectory-error}
+        \end{figure}
+    }
+
+\def \SingleRobotAPEBoxPlot{
+        \begin{figure}[htp]
+            \begin{center}
+                \includegraphics[width=\linewidth]{figures/SingleTrajErrorFigureV4.png}
+            \end{center}
+            \vspace{-2mm}
+            \caption{Box and whisker plots of the absolute pose error (APE) of
+                    the estimated trajectory of a single robot for each initialization
+                    strategy. Each subplot represents results from 20 simulations. The
+                    left subplot refers to low noise experiments and the right subplot
+                    concerns high noise experiments.}
+            \vspace{-5mm}
+            \label{fig:single-trajectory-error}
+        \end{figure}
+    }
+
+\def \ScoreDeterminantPlot{
+        \begin{figure}[tp]
+            \vspace*{2mm}
+            \begin{center}
+                \includegraphics[width=\linewidth]{figures/DetFigureV4.png}
+            \end{center}
+            \vspace{-3mm}
+            \caption{Examples of low- and high-quality SCORE solutions (before refinement).
+                    The top row shows the determinants of
+                    each of the rotation matrices for
+                    four robots. Each colored curve represents a different
+                    robot's trajectory. The bottom row visualizes the
+                    corresponding SCORE initialization for each determinant
+                    plot. Visualized are: (Top-Left) The determinants for a
+                    high-quality initialization, (Bottom-Left) corresponding
+                    high-quality SCORE initialization, (Top-Right) the
+                    determinants for a low-quality initialization.
+                    (Bottom-Right) corresponding low-quality SCORE
+                    initialization. Observe how several trajectories with small
+                    determinants ($\det (\rot) \leq 0.05$) were `flattened' into
+                    linear segments in the low-quality
+                    initialization.}
+            \label{fig:rotation-determinants}
+            \vspace{-6mm}
+        \end{figure}
+    }
+
+% noise params for simulations
+\def \highSigma{0.5}
+\def \highSigmaSq{(\highSigma)^2}
+\def \highTauInvSqrt{0.05}
+\def \highTauInv{(\highTauInvSqrt)^2}
+\def \highKappaInv{2 \times (0.02)^2}
+
+\def \lowSigma{0.01}
+\def \lowSigmaSq{(\lowSigma)^2}
+\def \lowTauInvSqrt{0.01}
+\def \lowTauInv{(\lowTauInvSqrt)^2}
+\def \lowKappaInv{2 \times (0.002)^2}
+
+\def \RaSlamQcqp{
+        \begin{equation}
+            \label{eq:ra-slam-qcqp}
+            \begin{aligned}
+                \min\limits_{\substack{ \tran_i \in \dvec                                                                                      \\ \rot_i \in \dmat \\ \dist_{ij} \in \RnonNeg}} ~~
+                    & \sum\limits_{\dedge \in \TransformEdges} \kappa_{ij} \lVert \rot_j - \rot_i \nrot_{ij} \rVert_F^2                        \\
+                +   & \sum\limits_{\dedge \in \TransformEdges} \tau_{ij} \left \lVert \tran_j - \tran_i - \rot_i \ntran_{ij} \right \rVert_2^2 \\
+                +   & \sum_{\dedge \in \RangeEdges} \frac{1}{\sigma_{ij}^2}( \dist_{ij} - \ndist_{ij})^2                                       \\
+                \st & \rot_i \rot_i^\top = I_d,~i = 1,\ldots,n                                                                                 \\
+                    & \dist_{ij}^2 = \lVert \tran_i - \tran_j \rVert_2^2,~\forall \dedge \in \RangeEdges ~ .
+            \end{aligned}
+        \end{equation}
+    }
+
+\def \RaSlamQcqpTwo{
+        \begin{subequations}
+            \label{eq:ra-slam-qcqp}
+            \begin{equation}
+                \label{eq:ra-slam-qcqp-cost}
+            \begin{aligned}
+                \min\limits_{\substack{ \tran_i \in \dvec                                                                                      \\ \rot_i \in \dmat \\ \dist_{ij} \in \RnonNeg}} ~~
+                    & \sum\limits_{\dedge \in \TransformEdges} \kappa_{ij} \lVert \rot_j - \rot_i \nrot_{ij} \rVert_F^2                        \\
+                +   & \sum\limits_{\dedge \in \TransformEdges} \tau_{ij} \left \lVert \tran_j - \tran_i - \rot_i \ntran_{ij} \right \rVert_2^2 \\
+                +   & \sum_{\dedge \in \RangeEdges} \frac{1}{\sigma_{ij}^2}( \dist_{ij} - \ndist_{ij})^2                                       \\
+            \end{aligned}
+            \end{equation}
+            \begin{equation}
+                \label{eq:ra-slam-qcqp-constraints}
+            \begin{aligned}
+                \st & \rot_i \rot_i^\top = I_d,~i = 1,\ldots,n                                                                                 \\
+                    & \dist_{ij}^2 = \lVert \tran_i - \tran_j \rVert_2^2,~\forall \dedge \in \RangeEdges
+            \end{aligned}
+            \end{equation}
+        \end{subequations}
+    }
+
+
+
+
+\def \CostFunction{\text{F} (\bf\rot, \bf\tran, \bf\dist)}

@@ -1,0 +1,49 @@
+\section{Introduction}
+
+Range-aided simultaneous localization and mapping (RA-SLAM) is a key robotic
+task, with applications in planetary \cite{boroson20iros}, subterranean
+\cite{funabiki21ral}, and sub-sea \cite{Newman03icra,Bahr06iser,Bahr12iros}
+environments. RA-SLAM combines range measurements (e.g., distances between
+acoustic beacons) with measurements of relative rigid transformations (e.g.,
+odometry) to estimate a set of robot poses and landmark positions.
+
+RA-SLAM differs from pose-graph simultaneous localization and mapping (SLAM) in
+that the sensing models of range measurements induce substantial difficulties
+for state-estimation. However, ranging is a valuable sensor modality and
+further developments in RA-SLAM could substantially advance the state of robot
+navigation.
+
+The state-of-the-art formulation of SLAM problems is as \textit{maximum a
+posteriori} (MAP) inference, which takes the form of an optimization problem.
+However, because robot orientations are a non-convex set, the MAP problem is
+non-convex. Additionally, in RA-SLAM, the measurement models of range sensing
+introduce further non-convexities. As a result, standard approaches to solving
+these MAP problems use local-search techniques and can only guarantee locally
+optimal solutions. Thus, good initializations to the MAP problem are key to
+obtaining quality RA-SLAM solutions.
+
+\TitleFigure
+
+This work approaches initialization for the non-convex MAP estimation problem
+through \textit{convex relaxation} \cite{boyd04book}, the construction of a
+convex optimization problem which attempts to approximate the original problem.
+Convex problems can be efficiently solved to global optimality, and many convex
+relaxations have shown success as initialization strategies in related robotic
+problems
+\cite{carlone15icra,carlone15iros,giamou19ral,so07mathematicalprogramming}.
+
+This work presents SCORE as a novel methodology for initializing RA-SLAM
+problems. SCORE applies to 2D and 3D scenarios with arbitrary numbers of robots
+and landmarks. As SCORE is a SOCP, it is easily implemented in existing
+convex optimization libraries, and scales gracefully to large problems. We
+summarize our contributions as follows:
+
+\begin{itemize}
+      \item A novel, convex-relaxation approach to initializing RA-SLAM
+            problems.
+      \item The first QCQP formulation of RA-SLAM, connecting
+            RA-SLAM to a broader body of work
+            \cite{rosen19ijrr,carlone15iros,giamou19ral,so07mathematicalprogramming}.
+      \item Our implementation of SCORE is open-sourced\footnote{\url{\RepoURL}}.
+\end{itemize}
+
