@@ -2,4 +2,6 @@
 
 *Authors: Alan Papalia, Joseph Morales, Kevin J. Doherty, David M. Rosen, John J. Leonard*
 
-This repo has the content and compiled .pdf for the extended version of our ICRA23 submission
+This repo has the content and compiled .pdf for the extended version of our ICRA23 submission. 
+
+Please check: `score2023_extended.pdf` for the extended pdf pre-compiled
