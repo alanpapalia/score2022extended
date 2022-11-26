@@ -77,15 +77,15 @@ for each robot and each robot had a 50\% chance of generating a range
 measurement. If generated, the remaining endpoint of the range measurement was
 chosen by uniform sampling from the set of all other robots and beacons present.
 
+\SingleRobotTrajectoryFigure
+\SingleRobotAPEBoxPlot
+
 To evaluate the effect of different sensor noise levels, we tested low- and
 high-noise cases for both the single-robot and multi-robot scenarios. Each set
 of noise parameters comes from values found in previous real-world experiments.
 All odometry measurements were 1-meter movements, so a standard deviation of
 0.01 meters in translation measurements corresponds to 1\% of the distance
 traveled.
-
-\SingleRobotTrajectoryFigure
-\SingleRobotAPEBoxPlot
 
 The low-noise setting uses $\sigma^{2}_{ij} = \lowSigmaSq$, $\tau^{-1}_{ij} =
 \lowTauInv$, and $\kappa^{-1}_{ij} = \lowKappaInv$. This corresponds to standard
