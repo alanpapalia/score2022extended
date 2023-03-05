@@ -8,7 +8,7 @@ simple:
 	$(CMD) root
 
 clean:
-	rm -f *.aux *.fls *.fdb_* *.log *.pdf *.synctex.gz
+	rm -f *.aux *.fls *.fdb_* *.log root.pdf *.synctex.gz
 	rm -f *.bbl *.bcf *.fmt *.blg *.xml *.out
 	rm -rf auto
 	clear
