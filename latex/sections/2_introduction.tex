@@ -5,11 +5,11 @@ task, with applications in planetary \cite{boroson20iros}, subterranean
 \cite{funabiki21ral}, and sub-sea \cite{Newman03icra,Bahr06iser,Bahr12iros}
 environments. RA-SLAM combines range measurements (e.g., distances between
 acoustic beacons) with measurements of relative rigid transformations (e.g.,
-odometry) to estimate a set of robot poses and landmark positions.
+odometry or pose-landmark measurements) to estimate a set of robot poses and landmark positions.
 
 RA-SLAM differs from pose-graph simultaneous localization and mapping (SLAM) in
 that the sensing models of range measurements induce substantial difficulties
-for state-estimation. However, ranging is a valuable sensor modality and
+for state estimation. However, ranging is a valuable sensor modality and
 further developments in RA-SLAM could substantially advance the state of robot
 navigation.
 
@@ -30,7 +30,7 @@ convex optimization problem which attempts to approximate the original problem.
 Convex problems can be efficiently solved to global optimality, and many convex
 relaxations have shown success as initialization strategies in related robotic
 problems
-\cite{carlone15icra,carlone15iros,giamou19ral,so07mathematicalprogramming}.
+\cite{carlone15aicra,carlone15iros,giamou19ral,so07mathematicalprogramming}.
 
 This work presents SCORE as a novel methodology for initializing RA-SLAM
 problems. SCORE applies to 2D and 3D scenarios with arbitrary numbers of robots

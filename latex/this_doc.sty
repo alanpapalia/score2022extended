@@ -4,7 +4,7 @@
 \newcommand{\QcqpDeterminantFootnote}{\footnote{The determinant constraint can
                 be reformulated as a set of quadratic equality constraints as
                 shown by \cite{tron15rssworkshop}. As such,
-                \cref{eq:ra-slam-qcqp} can be exactly reformulated as a
+                Prob. \ref{prob:ra-slam-qcqp} can be exactly reformulated as a
                 QCQP. However, as we mention, the contribution of this
                 constraint is often negligible for SLAM problems.}}
 \newcommand{\IsotropicLangevinFootnote}{\footnote{This work assumes
@@ -19,7 +19,7 @@
                 the relative pose. I.e. at least 6 range measurements are
                 required.}}
 \newcommand{\SolveQcqpFootnote}{\footnote{Notably, at no point do we solve
-                \cref{eq:ra-slam-qcqp}. The purpose of \cref{eq:ra-slam-qcqp} is
+                Prob. \ref{prob:ra-slam-qcqp}. The purpose of Prob. \ref{prob:ra-slam-qcqp} is
                 to provide a convenient formulation of the problem to derive our relaxation.}}
 \newcommand{\ZhouImplementationFootnote} {\footnote{Additionally, we attempted to implement the
                 range-based relative pose estimation of \cite{zhou08tro} but
@@ -92,7 +92,7 @@
             \caption{A series of estimated trajectories from a multi-robot trial
                     using the low-noise parameters defined in
                     \cref{sec:generation-simulated-experiments}. From top-left to
-                    bottom-right: (Top-Left) Estimated trajectory from GT-Init
+                    bottom-right: (Top-Left) Ground truth trajectories, (Top-Right) Estimated trajectory from GT-Init
                     initialization, (Bottom-Left) Estimated trajectory from SCORE
                     initialization, (Bottom-Right) Estimated trajectory from Odom-P
                     initialization.}
@@ -110,7 +110,7 @@
             \vspace{-2mm}
             \caption{The final estimated trajectories and beacon positions from
                     a single-robot trial with low-noise parameters as defined in
-                    \cref{sec:generation-simulated-experiments}.  Blue lines
+                    \cref{sec:generation-simulated-experiments}. Blue lines
                     indicate trajectory and the red dot is the beacon position.
                     From top-left to bottom-right: (Top-Left) The ground-truth
                     trajectory of the robot, (Top-Right) Estimated trajectory
@@ -132,11 +132,11 @@
             \end{center}
             \vspace{-4mm}
             \caption{The estimated trajectories from 3 separate autonomous
-                    underwater vehicle (AUV) trials. The dashed lines indicate the
-                    ground truth trajectories of the robot, green lines indicate the
-                    estimated trajectory using SCORE initialization, and orange lines
-                    indicate the estimated trajectory using odometric
-                    initialization.}
+            underwater vehicle (AUV) trials. The dashed lines indicate the
+            ground truth robot trajectories, green lines indicate the
+            estimated trajectory using SCORE initialization and local
+            refinement, and orange lines indicate the estimated trajectory using
+            odometric initialization and local refinement.}
             \label{fig:single-robot-trajs}
             \vspace{-4mm}
         \end{figure}
@@ -148,12 +148,13 @@
                 \includegraphics[width=0.9\linewidth]{figures/GoatsAPEv2.png}
             \end{center}
             \vspace{-5mm}
-            \caption{The absolute pose error (APE) of the estimated trajectories
-                    in the AUV trials
-                    for both SCORE and Odom initialization strategies. Green
-                    indicates SCORE initialization, and orange indicates
-                    odometric initialization.}
-            \vspace{-4mm}
+            \caption{The absolute pose error (APE) \cite{grupp2017evo} of the
+            estimated trajectories in the AUV trials described in
+            \cref{fig:single-robot-trajs}. Green indicates an estimate via SCORE
+            initialization and subsequent local refinement; red indicates an
+            estimate via odometric initialization and subsequent local
+            refinement.}
+            \vspace{-5mm}
             \label{fig:single-trajectory-error}
         \end{figure}
     }
@@ -235,7 +236,7 @@
 
 \def \RaSlamQcqp{
         \begin{equation}
-            \label{eq:ra-slam-qcqp}
+            \label{prob:ra-slam-qcqp}
             \begin{aligned}
                 \min\limits_{\substack{ \tran_i \in \dvec                                                                                      \\ \rot_i \in \dmat \\ \dist_{ij} \in \RnonNeg}} ~~
                     & \sum\limits_{\dedge \in \TransformEdges} \kappa_{ij} \lVert \rot_j - \rot_i \nrot_{ij} \rVert_F^2                        \\
@@ -249,9 +250,8 @@
 
 \def \RaSlamQcqpTwo{
         \begin{subequations}
-            \label{eq:ra-slam-qcqp}
+            \label{prob:ra-slam-qcqp}
             \begin{equation}
-                \label{eq:ra-slam-qcqp-cost}
             \begin{aligned}
                 \min\limits_{\substack{ \tran_i \in \dvec                                                                                      \\ \rot_i \in \dmat \\ \dist_{ij} \in \RnonNeg}} ~~
                     & \sum\limits_{\dedge \in \TransformEdges} \kappa_{ij} \lVert \rot_j - \rot_i \nrot_{ij} \rVert_F^2                        \\
@@ -260,7 +260,6 @@
             \end{aligned}
             \end{equation}
             \begin{equation}
-                \label{eq:ra-slam-qcqp-constraints}
             \begin{aligned}
                 \st & \rot_i \rot_i^\top = I_d,~i = 1,\ldots,n                                                                                 \\
                     & \dist_{ij}^2 = \lVert \tran_i - \tran_j \rVert_2^2,~\forall \dedge \in \RangeEdges

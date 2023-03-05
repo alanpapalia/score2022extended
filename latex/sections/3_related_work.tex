@@ -13,7 +13,7 @@ blanco08icra}, mixture models \cite{blanco08iros}, and NLS optimization
 We first survey previous initialization strategies for RA-SLAM problems and then
 expand the scope to cover initialization strategies for general pose-graph SLAM
 problems. As our initialization approach is a convex relaxation of the RA-SLAM
-problem, we discuss related convex relaxations in robotic state-estimation.
+problem, we discuss related convex relaxations in robotic state estimation.
 Finally, as the key challenge that differentiates RA-SLAM from pose-graph SLAM
 is the nature of range measurements, we discuss the closely related field of
 sensor network localization (SNL) and convex relaxations developed specifically
@@ -40,10 +40,10 @@ odometric pose composition to initialize all other poses. In fact,
 \cite{jiang20itaes,li20iros,Li2022ral} utilize convex relaxation to solve the
 relative transformation problem.
 
-\subsection{Initialization and Convex Relaxation in State-Estimation}
+\subsection{Initialization and Convex Relaxation in State Estimation}
 
 In pose-graph SLAM many existing initializations solve approximations of the MAP
-problem. \cite{carlone15icra} leveraged the relationships between rotation and
+problem. \cite{carlone15aicra} leveraged the relationships between rotation and
 translation measurements in SLAM and explored the use of several rotation
 averaging algorithms
 \cite{martinec07cvpr,govindu01cvpr,fredriksson13lnsc,tron14tac} to obtain
@@ -52,16 +52,16 @@ problem as two sequential linear estimation problems \cite{carlone14ijrr}.
 However, these approaches do not consider range measurements and thus do not
 extend to RA-SLAM problems.
 
-With exception to \cite{tron14tac}, these initialization procedures represent
-convex relaxations of the pose-graph SLAM problem. Subsequent works in
-pose-graph SLAM developed convex relaxations which obtained exact
-solutions to the non-convex MAP problem \cite{rosen19ijrr,
-carlone15iros,briales17ral,tron15rssworkshop, fan20tro
-}. Other works developed exact convex relaxations for
-the problems of extrinsic calibration \cite{giamou19ral}, two-view relative pose
-estimation \cite{briales18cvpr,garcia-salguero21ivc}, and spline-based
-trajectory estimation from range measurements with known beacon locations
-\cite{pacholska20ral}. With exception to \cite{pacholska20ral}, these convex
+Except for \cite{tron14tac}, these initialization procedures
+represent convex relaxations of the pose-graph SLAM problem. Subsequent works in
+pose-graph SLAM developed convex relaxations which obtained exact solutions to
+the non-convex MAP problem \cite{rosen19ijrr,
+carlone15iros,briales17ral,tron15rssworkshop, fan20tro }. Other works developed
+exact convex relaxations for the problems of extrinsic calibration
+\cite{giamou19ral}, two-view relative pose estimation
+\cite{briales18cvpr,garcia-salguero21ivc}, and spline-based trajectory
+estimation from range measurements with known beacon locations
+\cite{pacholska20ral}. Except for \cite{pacholska20ral}, these convex
 relaxations also do not extend to range measurements. However,
 \cite{pacholska20ral} required known beacon locations, allowed only for range
 measurements, and only considered single-robot localization. SCORE allows for

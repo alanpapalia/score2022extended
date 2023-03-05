@@ -1,8 +1,6 @@
 \section{Experiments}
 \label{sec:experiments}
 
-
-
 In this section we present an experimental evaluation of SCORE's performance on
 several RA-SLAM problems, consisting of (1) three real-world trials
 involving an autonomous underwater vehicle (AUV) and acoustic beacons, (2)
@@ -16,16 +14,17 @@ performance in the challenging, but useful, scenario in which the relative
 transformation between robots must be estimated from odometry and range
 measurements.
 
-\subsection{Experimental Evaluation}
-\label{sec:experimental-eval}
-
-We compare SCORE to other initialization techniques using the MAP estimate
-obtained from the given initialization. Our SCORE implementation follows the
-details of \cref{sec:score-to-initialize}, using Drake \cite{drake} and the
-Gurobi convex solver \cite{gurobi}.
+We compare initialization techniques by obtaining an initialization, locally
+optimizing the initialization according to Prob. \ref{prob:ra-slam-nls} and
+then evaluating the final, locally refined estimates. All comparisons involved a
+single initialization and a single local optimization, as opposed to iteratively
+re-optimizing as new measurements are added.
+Our SCORE implementation
+follows \cref{sec:score-to-initialize}, using Drake \cite{drake}
+and the Gurobi convex solver \cite{gurobi}.
 
 We emphasize that the initialization strategies compared against represent
-either idealistic scenarios (ground truth values) or the existing
+either ideal scenarios (ground truth values) or the existing
 state-of-the-art (odometric approaches) for the problems presented in these
 experiments. Whereas sophisticated initialization techniques exist for
 pose-graph SLAM problems, RA-SLAM lacks such techniques.
@@ -62,7 +61,7 @@ done in standard techniques \cite{Newman03icra,guo2017ijmav}.
 As seen in \cref{fig:single-robot-trajs}, the SCORE initialized solution closely
 matched the ground truth trajectory. The APE results in
 \cref{fig:single-trajectory-error} support this argument, showing consistently
-lesser error for the SCORE initialized solution in comparison to the Odom
+lesser APE for the SCORE initialized solution in comparison to the Odom
 solution.
 
 \subsection{Generation of Simulations}
@@ -149,7 +148,7 @@ In Odom-P we assume a perfectly known starting pose of each robot and compose
 the odometry chain to initialize the other pose variables. Such a situation may
 occur in marine robotics, where AUVs begin with GPS before diving underwater.
 In contrast to Odom-P, for Odom-R we assume no prior information and choose the
-starting pose for each robot randomly. We note that Odom-R is a standard
+starting pose for each robot randomly. Odom-R is a standard
 approach to initialization for multi-robot RA-SLAM \cite{guo2017ijmav,li20arxiv}
 and is arguably the fairest comparison for SCORE as both require no prior
 information.
@@ -166,9 +165,9 @@ using the GT-Init initialization and provide a substantially better estimate
 than that provided by the Odom-P and Odom-R initializations.
 
 These qualitative observations from \cref{fig:multi-robot-trajs} are supported
-by the quantitative analysis of the APE in \cref{fig:multi-trajectory-error}. We
+by the APE evaluation in \cref{fig:multi-trajectory-error}. We
 observe that for the high-noise multi-robot experiments the SCORE initialization
-strategy resulted in similar APE to the GT-Init initialization and had notably
+strategy resulted in similar APE to the GT-Init initialization and had
 reduced APE in comparison to Odom-P and Odom-R. For the low-noise multi-robot
 experiments SCORE resulted in higher APE than the GT-Init initialization
 approach but lesser APE than either of the odometric initialization strategies.

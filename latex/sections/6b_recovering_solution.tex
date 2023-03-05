@@ -1,4 +1,4 @@
-\section{Using SCORE to Initialize Local-Optimization}
+\section{Using SCORE to Initialize Local Optimization}
 \label{sec:score-to-initialize}
 
 Though SCORE can be solved to global optimality, in general the SCORE solution
@@ -20,6 +20,6 @@ nearest rotation matrix via singular value decomposition, as follows:
 \end{align}
 Projecting all approximate rotations to $\SOd$ produces a valid set of pose and
 landmark estimates. We then use this projected solution to initialize the MAP
-problem in \cref{eq:ra-slam-nls} and solve the problem with an iterative,
+problem in Prob. \ref{prob:ra-slam-nls} and solve the problem with an iterative,
 local-search based NLS solver (e.g., \cite{dellaert2012techreport}) to refine
 the SCORE initial estimate.

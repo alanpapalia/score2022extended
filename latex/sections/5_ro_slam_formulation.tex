@@ -6,7 +6,7 @@ corresponding MAP estimation problem.
 \subsection{Inference Over a Graph}
 
 We formulate RA-SLAM as inference over a directed graph, with nodes as variables
-(i.e. robot poses and landmark positions) and the edges representing
+(i.e., robot poses and landmark positions) and the edges representing
 measurements. Without loss of generality, we assume directionality in the edges.
 The edge-set of all measurements of relative rigid transformations is denoted
 $\TransformEdges$, where $\dedge \in \TransformEdges$ represents a measured
@@ -28,9 +28,11 @@ $\nrot$):
 \begin{equation}
     \begin{aligned}
         \ntran_{i j} & =\ttran_{i j}+\ptran_{i j}, & \ptran_{i j} & \sim \mathcal{N}\left(0, \tau_{i j}^{-1} I_{d}\right), \\
-        \nrot_{i j}  & =\trot_{i j} \prot_{i j},   & \prot_{i j}  & \sim \langevin \left(I_{d}, \kappa_{i j}\right).
+        \nrot_{i j}  & =\trot_{i j} \prot_{i j},   & \prot_{i j}  & \sim \langevin \left(I_{d}, \kappa_{i j}\right),
     \end{aligned}
 \end{equation}
+where the Langevin distribution is described in \cite[App. A]{rosen19ijrr}.
+
 
 We assume the following generative Gaussian model for range measurements:
 \begin{equation}
@@ -49,17 +51,17 @@ We write the MAP problem corresponding to the sensor models of
 translation and rotation of node $i$. Bolded symbols indicate groupings (e.g.,
 $\textbf{\tran} \triangleq \{\tran_i~\forall~i=1,\ldots,n \}$):
 \begin{equation}
-    \label{eq:general-MAP}
+    \label{prob:general-MAP}
     \begin{array}{r}
         \max\limits_{ \bf\tran , \bf\rot } ~ \prob ( \bf \ntran , \bf \nrot, \bf \ndist \mid \bf \tran , \bf \rot).
     \end{array}
 \end{equation}
-This general MAP problem of \cref{eq:general-MAP} is equivalently solved by
+This general MAP problem of Prob. \ref{prob:general-MAP} is equivalently solved by
 minimizing its negative log-likelihood \cite{dellaert2017factor}. Given the
 models of \cref{sec:noise-models}, the MAP estimate of the RA-SLAM
 problem can be expressed as the following NLS problem:
 \begin{equation}
-    \label{eq:ra-slam-nls}
+    \label{prob:ra-slam-nls}
     \begin{aligned}
         \min\limits_{\substack{ \tran_i \in \dvec                                                                                    \\ \rot_i \in \SOd}} ~~
           & \sum\limits_{\dedge \in \TransformEdges} \kappa_{ij} \lVert \rot_j - \rot_i \nrot_{ij} \rVert_F^2                        \\
@@ -70,14 +72,14 @@ problem can be expressed as the following NLS problem:
 where $\| \cdot \|_F$ denotes the matrix
 Frobenius norm:
 
-In \cref{eq:ra-slam-nls} the first two summands correspond to relative
+In Prob. \ref{prob:ra-slam-nls} the first two summands correspond to relative
 transformation measurements whereas the third summand corresponds to
 range measurements. Derivation of the cost terms in the first two summands can
 be found in \cite{rosen19ijrr}. The cost terms in the third summand follow
 immediately from the negative log-likelihood of the model in
 \cref{eq:range-measurement-model}.
 
-Notice that there are two distinct sources of non-convexity in \cref{eq:ra-slam-nls}. The rotation variables are members of the special orthogonal group,
+Notice that there are two distinct sources of non-convexity in Prob. \ref{prob:ra-slam-nls}. The rotation variables are members of the special orthogonal group,
 i.e., $\rot_i \in \SOd$, which is a non-convex set. Additionally, the cost terms
 due to range measurements are non-convex due to the $ \lVert \tran_i - \tran_j
     \rVert_2 $ component.
