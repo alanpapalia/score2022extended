@@ -8,8 +8,6 @@ the difficulty of the problems presented and that SCORE is capable
 of providing quality initializations for multi-robot RA-SLAM problems with only
 odometry and inter-robot range measurements.
 
-\MultiRobotAPEBoxPlot
-
 Furthermore, in evaluating SCORE's performance on these multi-robot experiments
 we emphasize that Odom-R is the only other initialization technique which
 assumes the same amount of prior information as SCORE, i.e., no information
@@ -35,11 +33,15 @@ phenomena to results in pose-graph SLAM \cite{carlone15aicra}, which suggested
 that the quality of the orientation initialization played an outsized role on
 the final, locally refined estimate.
 
-Finally, based on results in our extended version
-\cite{papalia2022scoreextended}, SCORE can run in realistic time for
-real-world application. E.g., for a problem with 2000 robot poses SCORE obtained
-a solution in roughly 8 seconds.
-
+Finally, based on results in \cref{sec:runtime-evaluation} we found that, while
+not fast enough for real-time state-estimation, SCORE can scale to meaningful
+problem sizes and run fast enough to be deployed in real-world robotics
+applications. We note that, similarly to most SLAM problems, the SCORE problem
+is inherently ill-conditioned. As a result, we used more conservative
+optimization parameters to ensure that SCORE could be reliably solved for a
+wide-range of problems. Thus, it is possible that substantial efficiency gains
+could be found by parameter tuning for specific applications as well as by
+exploration of other techniques to improve numerical stability.
 
 
 \subsection{When Does SCORE Return Poor Initializations?}

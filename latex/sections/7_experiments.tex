@@ -171,3 +171,41 @@ strategy resulted in similar APE to the GT-Init initialization and had
 reduced APE in comparison to Odom-P and Odom-R. For the low-noise multi-robot
 experiments SCORE resulted in higher APE than the GT-Init initialization
 approach but lesser APE than either of the odometric initialization strategies.
+
+\MultiRobotAPEBoxPlot
+
+
+\subsubsection{Runtime Evaluation}
+\label{sec:runtime-evaluation}
+
+\begin{figure}[!tp]
+    \begin{center}
+        \includegraphics[width=\linewidth, trim={0mm 0mm 0mm 0mm},clip]{figures/score_runtimes_confidence-trimmy.png}
+    \end{center}
+    \vspace{-2mm}
+    \caption{Time to solve SCORE problems of increasing size. The solid
+    line indicates the mean, with the shaded region indicating a 95\%
+    confidence region. Statistics were computed from 10 experiments at
+    each problem size.}
+    \label{fig:runtime-evaluation}
+    \vspace{-4mm}
+\end{figure}
+
+To evaluate the scalability of SCORE we solved multi-robot RA-SLAM problems of
+increasing size. The problems were four-robot problems with six static beacons
+and robot-robot and robot-beacon ranging. The problem size ranged from 100 poses
+per robot (400 poses total) to 2000 poses per robot (8000 poses total), and grew
+in increments of 100 poses per robot (each subsequent trial grew by 400 poses
+total). Each robot had 10\% chance of generating a range measurement at each
+time step. Each robot had its own odometry chain, but there were no pose-pose
+measurements between differing robots. For each problem size, 10 random
+experiments were generated.
+
+The results of these experiments can be seen in \cref{fig:runtime-evaluation},
+which displays the time required to solve the SCORE problem. As can be seen,
+there is a clear consistent increase in solve time as the problem grows, though
+there is some variation in the solve times at each size. Importantly, while not
+able to run in real-time, these experiments demonstrate that SCORE can solve
+problems of meaningful size in reasonable time for real-world applications.
+Depending on the specific application, SCORE could be run periodically to update
+an RA-SLAM solution after many new measurements were collected.
